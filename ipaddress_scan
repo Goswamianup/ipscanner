@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Function to check if fping is installed
+check_fping() {
+    if ! command -v fping &> /dev/null; then
+        echo "Error: fping is not installed. Please install fping."
+        exit 1
+    fi
+}
+
+# Function to check if nmap is installed
+check_nmap() {
+    if ! command -v nmap &> /dev/null; then
+        echo "Error: nmap is not installed. Please install nmap."
+        exit 1
+    fi
+}
+
+# Function to perform LAN scan using fping
+fping_scan() {
+    echo "Scanning LAN network using fping..."
+    fping -a -g $1
+    echo "Scan complete."
+}
+
+# Function to perform LAN scan using nmap
+nmap_scan() {
+    echo "Scanning LAN network using nmap..."
+    nmap -sn $1 | grep "Nmap scan report" | awk '{print $5}'
+    echo "Scan complete."
+}
+
+# Check which tool is preferred by the user
+echo "Which tool do you want to use for scanning? (fping/nmap)"
+read tool
+
+case $tool in
+    "fping")
+        check_fping
+        ;;
+    "nmap")
+        check_nmap
+        ;;
+    *)
+        echo "Invalid tool selected. Please choose either 'fping' or 'nmap'."
+        exit 1
+        ;;
+esac
+
+# Specify the range of IP addresses for scanning
+echo "Enter the IP address range to scan (e.g., 192.168.1.1/24):"
+read LAN_RANGE
+
+# Perform the LAN scan based on the selected tool
+case $tool in
+    "fping")
+        fping_scan $LAN_RANGE
+        ;;
+    "nmap")
+        nmap_scan $LAN_RANGE
+        ;;
+esac
+
