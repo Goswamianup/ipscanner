@@ -11,4 +11,4 @@ give ip range
 
 
 note :- 
-This project has been for educational purposes. to help others find bugs and scan the website. Please don't use this project to harm others.
+This project has been for educational purposes. to help others in scanning network. Please don't use this project to harm others.
