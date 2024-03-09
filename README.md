@@ -7,3 +7,8 @@ cd ipscanner
 ./ipscanner
 select nmap or fping 
 give ip range 
+
+
+
+note :- 
+This project has been for educational purposes. to help others find bugs and scan the website. Please don't use this project to harm others.
