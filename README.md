@@ -1,2 +1,8 @@
-# ipscanner
-scan the lan network with the thelp of fping and nmap
+
+install
+git clone 
+cd ipscanner
+sudo chmod +x ipscanner
+./ipscanner
+select fping or nmap 
+give ip address  range 
